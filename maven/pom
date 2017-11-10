@@ -2,6 +2,36 @@
 1)  Maven实战 (一) 坐标规划： http://www.infoq.com/cn/news/2010/12/xxb-maven-1
 2)  Maven实战（二） POM重构之增还是删: http://www.infoq.com/cn/news/2010/12/xxb-maven-2-pom
 3)  Maven实战（三）多模块项目的POM重构: http://www.infoq.com/cn/news/2011/01/xxb-maven-3-pom-refactoring
+----以上作者：许晓斌（Juven Xu），国内社区公认的Maven技术专家、Maven中文用户组创始人、Maven技术的先驱和积极推动者。
+    对Maven有深刻的认识，实战经验丰富，不仅撰写了大量关于Maven的技术文章，而且还翻译了开源书籍《Maven权威指南》，
+    对Maven技术在国内的普及和发展做出了很大的贡献。就职于Maven之父的公司，负责维护Maven中央仓库，
+    是Maven仓库管理器Nexus（著名开源软件）的核心开发者之一，曾多次受邀到淘宝等大型企业开展Maven方面的培训。
+    此外，他还是开源技术的积极倡导者和推动者，擅长Java开发和敏捷开发实践。
+
+
+2. 中央仓库地址？？？ http://repo1.maven.org/
+
+
+3. 坐标规划的原则  参照中央仓库地址：http://repo1.maven.org/
+1） 滥用坐标、错用坐标的样例比比皆是，在中央仓库中我们能看到SpringFramework有两种坐标，其一是直接使用springframework作为groupId，
+如springframework:spring-beans:1.2.6，另一种是用org.springframework作为groupId，如org.springframework:spring-beans:2.5。
+细心看看，前一种方式显得比较随意，后一种方式则是基于域名衍生出来的，显然后者更合理，因为用户能一眼根据域名联想到其Maven坐标，方便寻找。
+因此新版本的SpringFramework构件都使用org.springframework作为groupId。
+----Note：前一种在maven2下直接搜索springframework，后一种在maven2下搜索org，进入org，搜索springframework。
+2）由这个例子我们可以看到坐标规划一个原则是基于项目域名衍生。其实很多流行的开源项目都破坏了这个原则，例如JUnit，
+这是因为Maven社区在最开始接受构件并部署到中央仓库的时候，没有很很严格的限制，而对于这些流行的项目来说，
+一时间更改坐标会影响大量用户，因此也算是个历史遗留问题了。
+3）除此之外，artifactId的定义也有最佳实践，我们常常可以看到一个项目有很多的模块，例如api，dao，service，web等等。
+Maven项目在默认情况下生成的构件，其名称不会是基于artifactId，version和packaging生成的，例如api-1.0.jar，dao-1.0.jar等等，
+他们不会带有groupId的信息，这会造成一个问题，例如当我们把所有这些构件放到Web容器下的时候，你会发现项目dog有api-1.0.jar，
+项目cat也有api-1.0.jar，这就造成了冲突。更坏的情况是，dog项目有api-1.0.jar，cat项目有api-2.0.jar，其实两者没什么关系，
+可当放在一起的时候，却很容易让人混淆。为了让坐标更加清晰，又出现了一个原则，即在定义artiafctId时也加入项目的信息，例如dog项目的api模块，
+那就使用artifactId dog-api，其他就是dog-dao，dao-service等等。虽然连字号是不允许出现在Java的包名中的，但Maven没这个限制。
+现在dog-api-1.0.jar，cat-2.0.jar被放在一起时，就不容易混淆了。
+
+
+
+
 
 
 
