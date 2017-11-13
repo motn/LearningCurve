@@ -9,3 +9,49 @@ https://sourcemaking.com/design_patterns/singleton
 
 3. 最新最好的singleton实现为enum
 http://www.learn4master.com/design-pattern/java-singleton-pattern
+
+1) The ultimate Thread-safe and efficient singleton pattern in Java 
+// Correct lazy initialization in Java 
+@ThreadSafe
+class Singleton {
+    private static class SingletonHolder {
+       public static Singleton instance = new Singleton();
+    }
+ 
+    public static Singleton getInstance() {
+        return SingletonHolder.instance;
+    }
+}
+
+2) Using Enum
+public enum Color {
+ 
+    RED(1), GREEN(2), YELLOW(3);
+ 
+    private int nCode ;
+ 
+    private Color( int _nCode) {
+ 
+        this.nCode = _nCode;
+ 
+    }
+ 
+    @Override
+ 
+    public String toString() {
+ 
+        return String.valueOf ( this . nCode );
+ 
+    }
+ 
+}
+ 
+public class ColorTest {
+    public static void main(String[] args) {
+        Color red = Color.RED;
+        Color red2 = Color.RED;
+ 
+        System.out.println(red == red2); // return true
+ 
+    }
+}
