@@ -1,5 +1,11 @@
 
-中文
+1. 中文
 http://wiki.jikexueyuan.com/project/java-design-pattern/singleton-pattern.html
-英文
+
+
+2. 英文
 https://sourcemaking.com/design_patterns/singleton
+
+
+3. 最新最好的singleton实现为enum
+http://www.learn4master.com/design-pattern/java-singleton-pattern
