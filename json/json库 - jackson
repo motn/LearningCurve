@@ -1,0 +1,6 @@
+1. JSON库 Jackson 简介以及通过maven在项目中集成Jackson
+http://blog.lifw.org/post/49170316
+
+2. 使用 Jackson 树模型(tree model - jsonnode) API 处理 JSON
+http://blog.lifw.org/post/33344101
+
