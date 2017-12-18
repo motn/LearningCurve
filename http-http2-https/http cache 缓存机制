@@ -1,3 +1,12 @@
 1. HTTP 缓存之一： 客户端 - 浏览器缓存
 https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching?hl=zh-cn
 
+2. ETag 令牌 
+作为网络开发者，您如何利用高效的重新验证？浏览器会替我们完成所有工作：它会自动检测之前是否指定了验证令牌，
+它会将验证令牌追加到发出的请求上，并且它会根据从服务器接收的响应在必要时更新缓存时间戳。我们唯一要做的就
+是确保服务器提供必要的 ETag 令牌。检查您的服务器文档中有无必要的配置标志。
+注：提示：HTML5 Boilerplate 项目包含所有最流行服务器的配置文件样例，其中为每个配置标志和设置都提供了
+详细的注解。在列表中找到您喜爱的服务器，查找合适的设置，然后复制/确认您的服务器配置了推荐的设置。
+https://github.com/h5bp/server-configs
+
+
